@@ -1,7 +1,6 @@
 const standardTests = require('passwordless-tokenstore-test');
 const Sequelize = require('sequelize');
 const SequelizeStore = require('../lib/sequelize-store');
-const expect = require('chai').expect;
 const path = require('path');
 
 const sequelize = new Sequelize('database', 'username', 'password', {
