@@ -18,10 +18,12 @@ A typical implementation may look like this:
 ```javascript
 const passwordless = require('passwordless');
 const Sequelize = require('sequelize');
-const SequelizeStore = require('passwordless-sequelizestore');
+const { SequelizeStore, definePasswordlessTokenModel } = require('passwordless-sequelizestore');
 
 // Initialize your Sequelize client. 
 const sequelize = new Sequelize(/* ... */);
+// Define the model to store the tokens and register with Sequelize. 
+definePasswordlessTokenModel(sequelize, Sequelize.DataTypes);
 passwordless.init(new SequelizeStore(sequelize));
 
 passwordless.addDelivery(
@@ -33,7 +35,8 @@ app.use(passwordless.sessionSupport());
 app.use(passwordless.acceptToken());
 ```
 
-Make sure you create the table and index for your database like the following.
+Make sure you create the table and index for your database like the following, unless
+you use `sequelize.sync()`.  In the case, `sync()` would create the table for you.
 
 ```sql
 CREATE TABLE IF NOT EXISTS `passwordless_tokens` (

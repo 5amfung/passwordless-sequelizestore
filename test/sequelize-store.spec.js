@@ -1,14 +1,13 @@
 const standardTests = require('passwordless-tokenstore-test');
 const Sequelize = require('sequelize');
-const SequelizeStore = require('../lib/sequelize-store');
-const path = require('path');
+const { definePasswordlessTokenModel, SequelizeStore } = require('../index');
 
 const sequelize = new Sequelize('database', 'username', 'password', {
   host: 'localhost',
   dialect: 'sqlite',
   logging: false,
 });
-sequelize['import'](path.join(__dirname, '..', 'lib', 'passwordless-token'));
+definePasswordlessTokenModel(sequelize, Sequelize.DataTypes);
 
 function TokenStoreFactory() {
   return new SequelizeStore(sequelize);
