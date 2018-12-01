@@ -46,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `passwordless_tokens` (
   `origin_url` VARCHAR(255)
 );
 
-CREATE UNIQUE INDEX `passwordless_tokens_uid` ON `passwordless_tokens` (`uid`);
 CREATE UNIQUE INDEX `passwordless_tokens_token` ON `passwordless_tokens` (`token`);
 ```
 
