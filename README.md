@@ -42,7 +42,7 @@ you use `sequelize.sync()`.  In the case, `sync()` would create the table for yo
 CREATE TABLE IF NOT EXISTS `passwordless_tokens` (
   `uid` VARCHAR(255) NOT NULL PRIMARY KEY,
   `token` VARCHAR(255) NOT NULL,
-  `ttl` BIGINT NOT NULL,
+  `ttl` TIMESTAMP WITH TIME ZONE NOT NULL,
   `origin_url` VARCHAR(255)
 );
 
