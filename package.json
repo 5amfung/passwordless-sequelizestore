@@ -1,6 +1,6 @@
 {
   "name": "passwordless-sequelizestore",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "TokenStore for Passwordless using Sequelize",
   "main": "index.js",
   "dependencies": {
